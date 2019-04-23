@@ -44,7 +44,7 @@ class User {
   }
 
   canEdit(comment) {
-    if (comment._author._name === this._name){
+    if (comment._author._name === this._firstName){
       return this.canEdit;
     }
     
@@ -126,7 +126,7 @@ class Comment {
 
   // An example of encapsulation
   toString() {
-    let message = `${this._message} by ${this._author._name}`;
+    let message = `${this._message} by ${this._author._firstName}`;
     
     if (this._repliedTo){
       message += ` (replied to ${this._repliedTo._author._name})`
@@ -141,7 +141,7 @@ const moderator = new Moderator ( 'James', 'Obute');
 const admin = new Admin ( 'Philip', 'Igoni');
 
 console.log("\n\nDemonstration of Dynamic Polymorphism through method Overriding");
-console.log("Each User");
+console.log("Each User has a getFullName function but different forms of output");
 console.log("***************************************************************\n");
 console.log(user.getFullName());
 console.log(moderator.getFullName());
@@ -157,12 +157,18 @@ console.log(moderator.isLoggedIn());
 console.log(admin.isLoggedIn());
 console.log("****************\n");
 
-console.log("log them in ****************\n");
+console.log("logging them in ****************\n");
 moderator.logIn();
 admin.logIn;
 
-console.log("Check if Moderator and Admin is logged in ****************\n");
+console.log("Check again if Moderator and Admin is logged in");
 console.log(moderator.isLoggedIn());
 console.log(admin.isLoggedIn());
 console.log("****************\n");
 
+console.log("\n\nDemonstration of Encapsulation");
+console.log("The Implementation details of comment's toString() method is hidden");
+console.log("***************************************************************\n");
+
+const comment = new Comment(user, 'Hello World');
+console.log(comment.toString());
